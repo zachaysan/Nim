@@ -32,13 +32,13 @@ To build from source you will need:
 If you are on a fairly modern *nix system, the following steps should work:
 
 ```
-$ git clone https://github.com/nim-lang/Nim.git
-$ cd Nim
-$ git clone --depth 1 https://github.com/nim-lang/csources
-$ cd csources && sh build.sh
-$ cd ..
-$ bin/nim c koch
-$ ./koch boot -d:release
+git clone https://github.com/nim-lang/Nim.git
+cd Nim
+git clone --depth 1 https://github.com/nim-lang/csources
+cd csources && sh build.sh
+cd ..
+bin/nim c koch
+./koch boot -d:release
 ```
 
 You should then add the ``bin`` directory to your PATH, to make it easily
@@ -57,7 +57,7 @@ source based installations where you added Nim's ``bin`` directory to your PATH
 the easiest way of installing Nimble is via:
 
 ```
-$ nim e install_nimble.nims
+nim e install_nimble.nims
 ```
 
 **Warning:** If you install Nimble this way, you will not be able to use binary
