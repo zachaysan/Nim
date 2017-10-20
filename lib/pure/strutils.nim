@@ -2274,16 +2274,19 @@ proc removeSuffix*(s: var string, chars: set[char] = Newlines) {.
   ## Removes the first matching character from the string (in-place) given a
   ## set of characters. If the set of characters is only equal to `Newlines`
   ## then it will remove both the newline and return feed.
+  ##
   ## .. code-block:: nim
-  ##   var
-  ##     userInput = "Hello World!\r\n"
-  ##     otherInput = "Hello!?!"
-  ##   userInput.removeSuffix
-  ##   userInput == "Hello World!"
-  ##   userInput.removeSuffix({'!', '?'})
-  ##   userInput == "Hello World"
-  ##   otherInput.removeSuffix({'!', '?'})
-  ##   otherInput == "Hello!?"
+  ##
+  ##    var
+  ##      userInput = "Hello World!\r\n"
+  ##      otherInput = "Hello!?!"
+  ##    userInput.removeSuffix
+  ##    userInput == "Hello World!"
+  ##    userInput.removeSuffix({'!', '?'})
+  ##    userInput == "Hello World"
+  ##    otherInput.removeSuffix({'!', '?'})
+  ##    otherInput == "Hello!?"
+  ##
   if s.len == 0: return
   var last = len(s) - 1
   if chars == Newlines:
@@ -2299,21 +2302,27 @@ proc removeSuffix*(s: var string, chars: set[char] = Newlines) {.
 proc removeSuffix*(s: var string, c: char) {.
   rtl, extern: "nsuRemoveSuffixChar".} =
   ## Removes a single character (in-place) from a string.
+  ##
   ## .. code-block:: nim
-  ##   var
-  ##     table = "users"
-  ##   table.removeSuffix('s')
-  ##   table == "user"
+  ##
+  ##    var
+  ##      table = "users"
+  ##    table.removeSuffix('s')
+  ##    table == "user"
+  ##
   removeSuffix(s, chars = {c})
 
 proc removeSuffix*(s: var string, suffix: string) {.
   rtl, extern: "nsuRemoveSuffixString".} =
   ## Remove the first matching suffix (in-place) from a string.
+  ##
   ## .. code-block:: nim
-  ##   var
-  ##     answers = "yeses"
-  ##   answers.removeSuffix("es")
-  ##   answers == "yes"
+  ##
+  ##    var
+  ##      answers = "yeses"
+  ##    answers.removeSuffix("es")
+  ##    answers == "yes"
+  ##
   var newLen = s.len
   if s.endsWith(suffix):
     newLen -= len(suffix)
